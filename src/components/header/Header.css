@@ -1,0 +1,29 @@
+.header {
+  /* color: #f9feff; */
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 0;
+  border-bottom: 1px solid #000000;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.navbar {
+  display: flex;
+  margin-right: 2rem;
+  list-style-type: none;
+}
+
+.navbar li {
+  margin: 0 0.5rem 0;
+}
+
+.navbar li button {
+  border: none;
+  cursor: pointer;
+  background-color: #ffffff;
+}

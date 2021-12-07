@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import Product from "./components/Product";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -17,14 +20,18 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>My Store</h1>
-        <ul>
-          {products.map((product) => {
-            return <li key={product.id}>{product.title}</li>;
-          })}
-        </ul>
+        <Header />
+        <h1 className="homepage-title">Homepage</h1>
+        <div className="products-container">
+          <ul className="products">
+            {products.map((product) => {
+              return <Product product={product} key={product.id} />;
+            })}
+          </ul>
+        </div>
       </div>
       {/* Insert Footer component later */}
+      <Footer />
     </>
   );
 }

@@ -2,4 +2,10 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+.homepage-title {
+  display: flex;
+  justify-content: center;
 }
