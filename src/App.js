@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import Product from "./components/Product";
 import Header from "./components/header/Header";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -19,18 +22,19 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <Header />
-        <h1 className="homepage-title">Homepage</h1>
-        <div className="products-container">
-          <ul className="products">
-            {products.map((product) => {
-              return <Product product={product} key={product.id} />;
-            })}
-          </ul>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/products"
+              element={<Products products={products} />}
+            />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
         </div>
-      </div>
-      {/* Insert Footer component later */}
+      </Router>
       <Footer />
     </>
   );
