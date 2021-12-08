@@ -13,7 +13,9 @@ const Header = () => {
       <div className="navbar-container">
         <nav>
           <ul className="navbar">
-            <li>Search</li>
+            <li>
+              <input type="text" placeholder="Search" />
+            </li>
             <Link to="/products">
               <li>Products</li>
             </Link>
