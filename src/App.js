@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Header from "./components/header/Header";
 import Products from "./pages/Products";
+import Item from "./pages/ItemInfo";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
@@ -32,6 +33,10 @@ function App() {
               element={<Products products={products} />}
             />
             <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/products/:id"
+              element={<Item products={products} />}
+            />
           </Routes>
         </div>
       </Router>

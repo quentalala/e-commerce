@@ -1,24 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
   return (
     <header className="header">
       <div className="header-logo">
-        <img src="" alt="Logo" />
+        <Link to="/">
+          <img src="" alt="Logo" />
+        </Link>
       </div>
       <div className="navbar-container">
         <nav>
           <ul className="navbar">
-            <li>
-              <button>Search</button>
-            </li>
-            <li>
-              <button>Account</button>
-            </li>
-            <li>
-              <button>Cart</button>
-            </li>
+            <li>Search</li>
+            <Link to="/products">
+              <li>Products</li>
+            </Link>
+            <Link to="/cart">
+              <li>Cart</li>
+            </Link>
           </ul>
         </nav>
       </div>

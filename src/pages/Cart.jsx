@@ -3,9 +3,7 @@ import React from "react";
 function Cart() {
   return (
     <>
-      <div className="App">
-        <h1>Cart</h1>
-      </div>
+      <h1 className="page-title">Cart</h1>
     </>
   );
 }
