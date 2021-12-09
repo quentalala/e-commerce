@@ -10,7 +10,7 @@ const Product = ({ product }) => {
       </div>
       <div className="product-desc">
         <h3 className="product-title">{product.name}</h3>
-        <p className="product-price">${product.price.formatted_with_symbol}</p>
+        <p className="product-price">{product.price.formatted_with_symbol}</p>
         {/* <div className="desc-container">
           <p>{product.description}</p>
         </div> */}

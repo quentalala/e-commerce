@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 const Item = ({ products }) => {
   let id = useParams(); // Gets the product id
   let product_index = id.id;
+  // Find a better way to identify the correct item,
+  // filter() iterates through whole list
   let current_product = products.filter(
     (product) => product.id === product_index
   )[0];
