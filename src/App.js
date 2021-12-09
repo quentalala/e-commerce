@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { commerce } from "./library/commerce";
 import "./App.css";
 import Header from "./components/header/Header";
 import Products from "./pages/Products";
@@ -12,14 +13,16 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const [products, setProducts] = useState([]);
 
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+    setProducts(data);
+  };
+
   useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setProducts(res.data);
-      })
-      .catch((err) => console.log(err));
+    fetchProducts();
   }, []);
+
+  console.log(products.map((product) => console.log(product)));
 
   return (
     <>
