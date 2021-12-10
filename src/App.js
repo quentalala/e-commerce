@@ -4,7 +4,7 @@ import { commerce } from "./library/commerce";
 import "./App.css";
 import Header from "./components/header/Header";
 import Products from "./pages/Products";
-import Item from "./pages/ItemInfo";
+import ProductView from "./pages/ProductView";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([]);
+  // const [cart, setCart] = useState([]);
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -21,8 +22,6 @@ function App() {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  console.log(products.map((product) => console.log(product)));
 
   return (
     <>
@@ -38,7 +37,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route
               path="/products/:id"
-              element={<Item products={products} />}
+              element={<ProductView products={products} />}
             />
           </Routes>
         </div>
