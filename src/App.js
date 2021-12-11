@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import { commerce } from "./library/commerce";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -20,18 +19,14 @@ function App() {
   };
 
   const fetchCart = async () => {
-    setCart(await commerce.cart.retrieve());
+    const response = await commerce.cart.retrieve();
+    setCart(response);
   };
 
   const handleAddToCart = async (productId, quantity) => {
     const product = await commerce.cart.add(productId, quantity);
     setCart(product.cart);
   };
-
-  // const handleRemoveFromCart = async (productId) => {
-  //   const product = await commerce.cart.remove(productId);
-  //   setCart(product.cart);
-  // };
 
   useEffect(() => {
     fetchProducts();

@@ -5,9 +5,8 @@ function Cart() {
   const [cartDisplay, setCartDisplay] = useState([]);
 
   const fetchCartContent = async () => {
-    const response = await commerce.cart.retrieve();
-    const { line_items } = response;
-    setCartDisplay(line_items);
+    const response = await commerce.cart.contents();
+    setCartDisplay(response);
   };
 
   useEffect(() => {
@@ -15,7 +14,7 @@ function Cart() {
   }, []);
 
   const EmptyCart = () => {
-    return <div>I'm empty :(</div>;
+    return <div>Cart is empty :(</div>;
   };
 
   const NonEmptyCart = () => {
