@@ -1,48 +1,76 @@
-import React, { useState, useEffect } from "react";
-import { commerce } from "../library/commerce";
+import React from "react";
 
-function Cart({ cart, handleDeleteFromCart }) {
-  const [cartDisplay, setCartDisplay] = useState([]);
-
-  const fetchCartContent = async () => {
-    const response = await commerce.cart.contents();
-    setCartDisplay(response);
-  };
-
-  useEffect(() => {
-    fetchCartContent();
-  }, [cart]); // Every time the cart gets modified, cartDisplay state updates
-
+const Cart = ({
+  cart,
+  handleDeleteFromCart,
+  handleEmptyCart,
+  handleUpdateCart,
+}) => {
   const EmptyCart = () => {
     return <div>Cart is empty :(</div>;
   };
 
   const NonEmptyCart = () => {
     return (
-      <div>
-        {cartDisplay.map((item) => {
-          return (
-            <div key={item.id} className="cart-item">
-              <li>{item.name}</li>
-              <div className="product-img-container">
-                <img src={item.media.source} alt="" />
+      <>
+        <div className="cart-container">
+          <div>
+            {cart.line_items.map((item) => {
+              return (
+                <div key={item.id} className="cart-item">
+                  <div className="product-img-container">
+                    <img src={item.media.source} alt="" />
+                  </div>
+                  <li>{item.name}</li>
+                  <div>
+                    <button
+                      onClick={() =>
+                        handleUpdateCart(item.id, item.quantity + 1)
+                      }
+                    >
+                      +
+                    </button>
+                    <h3>{`Quantity : ${item.quantity}`}</h3>
+                    <button
+                      onClick={() =>
+                        handleUpdateCart(item.id, item.quantity - 1)
+                      }
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div>Price: {item.price.formatted_with_symbol}</div>
+                  <button onClick={() => handleDeleteFromCart(item.id)}>
+                    Remove from cart
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <div className="cart">
+            <div className="cart-summary">
+              <div>
+                <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2>
               </div>
-              <button onClick={() => handleDeleteFromCart(item.id)}>
-                Remove from cart
-              </button>
+              <p>{`Number of items in cart: ${cart.total_items}`}</p>
+              <button onClick={handleEmptyCart}>Empty Cart</button>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      </>
     );
   };
 
+  if (!cart.line_items) return "Give me a second :)";
+
   return (
     <>
-      <h1 className="page-title">Cart</h1>
-      <div>{cartDisplay.length === 0 ? <EmptyCart /> : <NonEmptyCart />}</div>
+      <div>
+        <h1 className="page-title">Cart</h1>
+        <div>{!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}</div>
+      </div>
     </>
   );
-}
+};
 
 export default Cart;

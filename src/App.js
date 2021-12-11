@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({}); // Declared, but curr not used :(
+  const [cart, setCart] = useState({});
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -19,20 +19,27 @@ function App() {
   };
 
   const fetchCart = async () => {
-    const response = await commerce.cart.retrieve();
-    setCart(response);
+    setCart(await commerce.cart.retrieve());
   };
 
   const handleAddToCart = async (productId, quantity) => {
-    const product = await commerce.cart.add(productId, quantity);
-    setCart(product.cart);
+    const response = await commerce.cart.add(productId, quantity);
+    setCart(response.cart);
   };
 
   const handleDeleteFromCart = async (productId) => {
-    const updatedCart = await commerce.cart.remove(productId);
-    console.log(updatedCart);
-    setCart(updatedCart);
-    console.log(cart);
+    const response = await commerce.cart.remove(productId);
+    setCart(response.cart);
+  };
+
+  const handleUpdateCart = async (productId, quantity) => {
+    const response = await commerce.cart.update(productId, { quantity });
+    setCart(response.cart);
+  };
+
+  const handleEmptyCart = async () => {
+    const response = await commerce.cart.empty();
+    setCart(response.cart);
   };
 
   useEffect(() => {
@@ -44,7 +51,7 @@ function App() {
     <>
       <Router>
         <div className="App">
-          <Header />
+          <Header inCart={cart.total_items} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -54,7 +61,12 @@ function App() {
             <Route
               path="/cart"
               element={
-                <Cart cart={cart} handleDeleteFromCart={handleDeleteFromCart} />
+                <Cart
+                  cart={cart}
+                  handleDeleteFromCart={handleDeleteFromCart}
+                  handleEmptyCart={handleEmptyCart}
+                  handleUpdateCart={handleUpdateCart}
+                />
               }
             />
             <Route
