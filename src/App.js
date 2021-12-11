@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({}); // Declared, but curr not used :(
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -26,6 +26,13 @@ function App() {
   const handleAddToCart = async (productId, quantity) => {
     const product = await commerce.cart.add(productId, quantity);
     setCart(product.cart);
+  };
+
+  const handleDeleteFromCart = async (productId) => {
+    const updatedCart = await commerce.cart.remove(productId);
+    console.log(updatedCart);
+    setCart(updatedCart);
+    console.log(cart);
   };
 
   useEffect(() => {
@@ -44,7 +51,12 @@ function App() {
               path="/products"
               element={<Products products={products} />}
             />
-            <Route path="/cart" element={<Cart cart={cart} />} />
+            <Route
+              path="/cart"
+              element={
+                <Cart cart={cart} handleDeleteFromCart={handleDeleteFromCart} />
+              }
+            />
             <Route
               path="/products/:id"
               element={

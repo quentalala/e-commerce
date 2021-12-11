@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "../library/commerce";
 
-function Cart() {
+function Cart({ cart, handleDeleteFromCart }) {
   const [cartDisplay, setCartDisplay] = useState([]);
 
   const fetchCartContent = async () => {
@@ -11,7 +11,7 @@ function Cart() {
 
   useEffect(() => {
     fetchCartContent();
-  }, []);
+  }, [cart]); // Every time the cart gets modified, cartDisplay state updates
 
   const EmptyCart = () => {
     return <div>Cart is empty :(</div>;
@@ -22,11 +22,14 @@ function Cart() {
       <div>
         {cartDisplay.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="cart-item">
               <li>{item.name}</li>
               <div className="product-img-container">
                 <img src={item.media.source} alt="" />
               </div>
+              <button onClick={() => handleDeleteFromCart(item.id)}>
+                Remove from cart
+              </button>
             </div>
           );
         })}
