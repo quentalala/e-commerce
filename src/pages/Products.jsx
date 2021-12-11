@@ -3,8 +3,6 @@ import Product from "../components/Product";
 import { Link } from "react-router-dom";
 
 const Products = ({ products }) => {
-  // console.log(products);
-
   return (
     <>
       <h1 className="page-title">Products</h1>

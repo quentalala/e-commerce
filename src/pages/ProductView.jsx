@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { commerce } from "../library/commerce";
 import { useParams } from "react-router-dom";
 
-const ProductView = () => {
+const ProductView = ({ handleAddToCart }) => {
   const [product, setProduct] = useState([]);
 
   let id = useParams(); // Gets the product id
@@ -29,10 +29,16 @@ const ProductView = () => {
 
   return (
     <div>
-      <h1 className="page-title">Test</h1>
+      <h1 className="page-title">{product.name}</h1>
       <div>
-        <h3>{product.name}</h3>
         <img src={product.src} alt="" style={{ width: 300 }} />
+        <button
+          name="Add to cart"
+          className="add-to-cart-btn"
+          onClick={() => handleAddToCart(product.identification, 1)}
+        >
+          Add to Cart
+        </button>
         <p>
           {product.description ? product.description.replace(regex, "") : null}
         </p>
