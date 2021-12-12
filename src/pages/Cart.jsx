@@ -1,4 +1,5 @@
 import React from "react";
+import "./Cart.css";
 
 const Cart = ({
   cart,
@@ -13,48 +14,65 @@ const Cart = ({
   const NonEmptyCart = () => {
     return (
       <>
-        <div className="cart-container">
-          <div>
-            {cart.line_items.map((item) => {
-              return (
-                <div key={item.id} className="cart-item">
-                  <div className="product-img-container">
-                    <img src={item.media.source} alt="" />
-                  </div>
-                  <li>{item.name}</li>
-                  <div>
-                    <button
-                      onClick={() =>
-                        handleUpdateCart(item.id, item.quantity + 1)
-                      }
+        <div>
+          <table className="cart-table">
+            <thead></thead>
+            <tbody>
+              {cart.line_items.map((item) => {
+                return (
+                  <tr key={item.id} className="cart-item">
+                    <td className="cart-item-img-wrapper">
+                      <img
+                        src={item.media.source}
+                        alt=""
+                        className="cart-item-img"
+                      />
+                    </td>
+                    <td className="cart-item-name">{item.name}</td>
+                    <td className="cart-item-qty">
+                      <div></div>
+                      <button
+                        onClick={() =>
+                          handleUpdateCart(item.id, item.quantity + 1)
+                        }
+                      >
+                        +
+                      </button>
+                      <h3>{item.quantity}</h3>
+                      <button
+                        onClick={() =>
+                          handleUpdateCart(item.id, item.quantity - 1)
+                        }
+                      >
+                        -
+                      </button>
+                    </td>
+                    <td className="cart-item-price">
+                      {item.price.formatted_with_symbol}
+                    </td>
+                    <td
+                      onClick={() => handleDeleteFromCart(item.id)}
+                      className="cart-item-rm"
                     >
-                      +
-                    </button>
-                    <h3>{`Quantity : ${item.quantity}`}</h3>
-                    <button
-                      onClick={() =>
-                        handleUpdateCart(item.id, item.quantity - 1)
-                      }
-                    >
-                      -
-                    </button>
-                  </div>
-                  <div>Price: {item.price.formatted_with_symbol}</div>
-                  <button onClick={() => handleDeleteFromCart(item.id)}>
-                    Remove from cart
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-          <div className="cart">
-            <div className="cart-summary">
-              <div>
-                <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2>
-              </div>
-              <p>{`Number of items in cart: ${cart.total_items}`}</p>
-              <button onClick={handleEmptyCart}>Empty Cart</button>
+                      <div className="cart-item-rm-img-wrapper">
+                        <img
+                          src={process.env.PUBLIC_URL + "/images/garbage.png"}
+                          alt="garbage bin"
+                          className="cart-item-rm-img"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="cart-summary">
+            <div>
+              <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2>
             </div>
+            <p>{`Number of items in cart: ${cart.total_items}`}</p>
+            <button onClick={handleEmptyCart}>Empty Cart</button>
           </div>
         </div>
       </>
@@ -65,9 +83,9 @@ const Cart = ({
 
   return (
     <>
-      <div>
-        <h1 className="page-title">Cart</h1>
-        <div>{!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}</div>
+      <h1 className="page-title">Cart</h1>
+      <div className="cart-container">
+        {!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}
       </div>
     </>
   );

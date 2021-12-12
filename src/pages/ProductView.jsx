@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "../library/commerce";
 import { useParams } from "react-router-dom";
+import "./ProductView.css";
 
 const ProductView = ({ handleAddToCart }) => {
   const [product, setProduct] = useState([]);
