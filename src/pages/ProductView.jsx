@@ -30,19 +30,30 @@ const ProductView = ({ handleAddToCart }) => {
 
   return (
     <div>
-      <h1 className="page-title">{product.name}</h1>
-      <div>
-        <img src={product.src} alt="" style={{ width: 300 }} />
-        <button
-          name="Add to cart"
-          className="add-to-cart-btn"
-          onClick={() => handleAddToCart(product.identification, 1)}
-        >
-          Add to Cart
-        </button>
-        <p>
-          {product.description ? product.description.replace(regex, "") : null}
-        </p>
+      {/* <h1 className="page-title">Product Page</h1> */}
+      <div className="productview-wrapper">
+        <div className="productview-container">
+          <div className="productview-img-wrapper">
+            <img src={product.src} alt="" className="productview-img" />
+          </div>
+          <div className="productview-desc">
+            <h1 className="productview-desc-title">{product.name}</h1>
+            <h3 className="productview-desc-price">{product.price}</h3>
+            <button
+              name="Add to cart"
+              className="add-to-cart-btn"
+              onClick={() => handleAddToCart(product.identification, 1)}
+            >
+              Add to Cart
+            </button>
+            <h4>Description</h4>
+            <p>
+              {product.description
+                ? product.description.replace(regex, "")
+                : null}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

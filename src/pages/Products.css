@@ -13,3 +13,11 @@
   text-decoration: none;
   width: 80%;
 }
+
+/* Product */
+.product-container {
+  list-style-type: none;
+  border: 1px solid black;
+  margin: 0.5px;
+  width: auto;
+}
