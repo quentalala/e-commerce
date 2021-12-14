@@ -13,14 +13,23 @@
   border: 1px solid lightgray;
 }
 
+.productview-container-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .productview-img-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: auto;
+  height: 600px;
+  /* border: 1px solid red; */
 }
 .productview-img {
   max-width: 90%;
+  max-height: 90%;
 }
 
 .productview-desc {

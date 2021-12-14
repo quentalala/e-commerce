@@ -33,8 +33,10 @@ const ProductView = ({ handleAddToCart }) => {
       {/* <h1 className="page-title">Product Page</h1> */}
       <div className="productview-wrapper">
         <div className="productview-container">
-          <div className="productview-img-wrapper">
-            <img src={product.src} alt="" className="productview-img" />
+          <div className="productview-container-left">
+            <div className="productview-img-wrapper">
+              <img src={product.src} alt="" className="productview-img" />
+            </div>
           </div>
           <div className="productview-desc">
             <h1 className="productview-desc-title">{product.name}</h1>
