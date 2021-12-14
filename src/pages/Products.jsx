@@ -15,6 +15,7 @@ const Products = ({ products }) => {
                 to={`/products/${product.id}`}
                 className="product-container"
                 key={product.id}
+                style={{ textDecoration: "none" }}
               >
                 <Product product={product} />
               </Link>

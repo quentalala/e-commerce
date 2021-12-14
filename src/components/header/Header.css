@@ -25,3 +25,30 @@
   cursor: pointer;
   background-color: #ffffff;
 }
+
+.header-cart,
+.header-products {
+  color: #000000;
+}
+.header-cart {
+  width: 1.5rem;
+}
+
+.cart-qty {
+  float: right;
+  z-index: 99;
+  margin-top: -25px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: red;
+}
+
+.cart-img-wrap {
+  height: 1rem;
+  width: 1rem;
+}
+
+.cart-img {
+  max-height: 100%;
+  max-width: 100%;
+}

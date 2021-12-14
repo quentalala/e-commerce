@@ -9,9 +9,9 @@
   display: grid;
   padding: 0;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   text-decoration: none;
-  width: 80%;
+  border: 1px solid lightgray;
 }
 
 /* Product */
