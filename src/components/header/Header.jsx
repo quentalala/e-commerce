@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = ({ inCart }) => {
+  const [displaySearch, setDisplaySearch] = useState(false);
   return (
     <header className="header">
       <div className="header-logo">
@@ -13,8 +14,25 @@ const Header = ({ inCart }) => {
       <div className="navbar-container">
         <nav>
           <ul className="navbar">
-            <li>
-              <input type="text" placeholder="Search" />
+            <li className="header-search">
+              <div>
+                {displaySearch ? (
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="header-searchbar"
+                  />
+                ) : null}
+              </div>
+              <button onClick={() => setDisplaySearch(!displaySearch)}>
+                <div className="magnify-img-wrapper">
+                  <img
+                    src={process.env.PUBLIC_URL + "/images/magnify.png"}
+                    alt=""
+                    className="magnify-img"
+                  />
+                </div>
+              </button>
             </li>
             <Link to="/products" style={{ textDecoration: "none" }}>
               <li className="header-products">Products</li>

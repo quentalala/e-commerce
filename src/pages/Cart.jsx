@@ -1,5 +1,6 @@
 import React from "react";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 
 const Cart = ({
   cart,
@@ -74,6 +75,9 @@ const Cart = ({
             <p>{`Number of items in cart: ${cart.total_items}`}</p>
             <button onClick={handleEmptyCart}>Empty Cart</button>
           </div>
+          <Link to="/checkout" style={{ textDecoration: "none" }}>
+            <button>Checkout</button>
+          </Link>
         </div>
       </>
     );

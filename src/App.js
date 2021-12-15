@@ -8,6 +8,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -78,6 +79,7 @@ function App() {
                 />
               }
             />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </div>
       </Router>
