@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddressForm from "../components/Form/AddressForm";
 import PaymentForm from "../components/Form/PaymentForm";
+import { commerce } from "../library/commerce";
 
-const Checkout = () => {
+const Checkout = ({ cart }) => {
   const [currStep, setCurrStep] = useState(0);
+  const [checkoutToken, setCheckoutToken] = useState("");
+  const [shippingData, setShippingData] = useState({});
+
+  useEffect(() => {
+    const generateToken = async () => {
+      try {
+        const token = await commerce.checkout.generateToken(cart.id, {
+          type: "cart",
+        });
+        setCheckoutToken(token);
+      } catch (err) {}
+    };
+
+    generateToken();
+  }, [cart]);
 
   const Confirmation = () => {
     return (
       <>
         <div>Comfirmation</div>
-        <button onClick={nextStep}>Restart form</button>
+        <button onClick={nextStep}>You can't go any further!</button>
+        <button onClick={backStep}>Go back</button>
       </>
     );
   };
@@ -17,21 +34,33 @@ const Checkout = () => {
   const nextStep = () => {
     if (currStep < 2) {
       setCurrStep((prevStep) => prevStep + 1);
-    } else {
-      setCurrStep(0);
     }
+  };
+  const backStep = () => {
+    if (currStep > 0) {
+      setCurrStep((prevStep) => prevStep - 1);
+    }
+  };
 
-    // Remove the code above this later and uncomment code below
-    // Going to be used to loop through currStep for the time being
-
-    // setCurrStep((prevStep) => prevStep + 1)
+  const next = (data) => {
+    setShippingData(data);
+    nextStep();
   };
 
   const Form = () =>
     currStep === 0 ? (
-      <AddressForm nextStep={nextStep} />
+      <AddressForm
+        nextStep={nextStep}
+        checkoutToken={checkoutToken}
+        next={next}
+      />
     ) : (
-      <PaymentForm nextStep={nextStep} />
+      <PaymentForm
+        nextStep={nextStep}
+        backStep={backStep}
+        shippingData={shippingData}
+        checkoutToken={checkoutToken}
+      />
     );
 
   console.log(currStep);
@@ -39,7 +68,7 @@ const Checkout = () => {
   return (
     <div>
       <h1>Checkout</h1>
-      <div>{currStep === 2 ? <Confirmation /> : <Form />}</div>
+      <div>{currStep === 2 ? <Confirmation /> : checkoutToken && <Form />}</div>
     </div>
   );
 };
