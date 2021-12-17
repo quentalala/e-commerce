@@ -6,9 +6,11 @@ import FormInput from "./FormInput";
 
 const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
-  const [shipCountry, setShipCountry] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
-  const [shipSubdiv, setShipSubdiv] = useState("");
+  const [shippingSubdivision, setShippingSubdivision] = useState("");
+  const [shippingOptions, setShippingOptions] = useState([]);
+  const [shippingOption, setShippingOption] = useState("");
 
   const methods = useForm();
 
@@ -26,7 +28,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
     );
     console.log(countries);
     setShippingCountries(countries);
-    setShipCountry(Object.keys(countries)[0]);
+    setShippingCountry(Object.keys(countries)[0]);
   };
 
   useEffect(() => {
@@ -47,14 +49,47 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
       countryCode
     );
     setShippingSubdivisions(subdivisions);
-    setShipSubdiv(Object.keys(subdivisions)[0]);
+    setShippingSubdivision(Object.keys(subdivisions)[0]);
   };
 
   useEffect(() => {
-    if (shipCountry) fetchShippingSubdivisions(shipCountry);
-  }, [shipCountry]);
+    if (shippingCountry) fetchShippingSubdivisions(shippingCountry);
+  }, [shippingCountry]);
 
-  console.log(shipCountry, shipSubdiv);
+  // Shipping Options
+  const options = shippingOptions.map((shipOp) => {
+    return {
+      id: shipOp.id,
+      label: `${shipOp.description} - (${shipOp.price.formatted_with_symbol})`,
+    };
+  });
+
+  const fetchShippingOptions = async (
+    checkoutTokenId,
+    country,
+    region = null
+  ) => {
+    const options = await commerce.checkout.getShippingOptions(
+      checkoutTokenId,
+      { country, region }
+    );
+
+    console.log(options);
+    setShippingOptions(options);
+    setShippingOption(options[0].id);
+  };
+
+  useEffect(() => {
+    if (shippingSubdivision) {
+      fetchShippingOptions(
+        checkoutToken.id,
+        shippingCountry,
+        shippingSubdivision
+      );
+    }
+  }, [checkoutToken.id, shippingCountry, shippingSubdivision]);
+
+  console.log(shippingCountry, shippingSubdivision);
 
   return (
     <>
@@ -69,8 +104,8 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
             <FormInput required name="city" label="City" />
             <FormInput required name="postalCode" label="Postal Code" />
             <select
-              value={shipCountry}
-              onChange={(event) => setShipCountry(event.target.value)}
+              value={shippingCountry}
+              onChange={(event) => setShippingCountry(event.target.value)}
             >
               {countries.map((country) => {
                 return (
@@ -81,8 +116,8 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
               })}
             </select>
             <select
-              value={shipSubdiv}
-              onChange={(event) => setShipSubdiv(event.target.value)}
+              value={shippingSubdivision}
+              onChange={(event) => setShippingSubdivision(event.target.value)}
             >
               {subdivisions.map((subdiv) => {
                 return (
@@ -92,7 +127,18 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
                 );
               })}
             </select>
-            <select></select>
+            <select
+              value={shippingOption}
+              onChange={(event) => setShippingOption(event.target.value)}
+            >
+              {options.map((option) => {
+                return (
+                  <option value={option.id} key={option.id}>
+                    {option.label}
+                  </option>
+                );
+              })}
+            </select>
             <button onClick={nextStep}>Proceed</button>
             <button onClick={backStep}>Go back</button>
           </div>
