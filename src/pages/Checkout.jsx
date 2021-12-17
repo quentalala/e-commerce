@@ -6,14 +6,15 @@ import { commerce } from "../library/commerce";
 const Checkout = ({ cart }) => {
   const [currStep, setCurrStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState("");
-  const [shippingData, setShippingData] = useState({});
 
   useEffect(() => {
     const generateToken = async () => {
       try {
-        const token = await commerce.checkout.generateToken(cart.id, {
-          type: "cart",
-        });
+        const token = await commerce.checkout.generateTokenFrom(
+          "cart",
+          commerce.cart.id()
+        );
+        console.log(token);
         setCheckoutToken(token);
       } catch (err) {}
     };
@@ -42,28 +43,18 @@ const Checkout = ({ cart }) => {
     }
   };
 
-  const next = (data) => {
-    setShippingData(data);
-    nextStep();
-  };
-
   const Form = () =>
     currStep === 0 ? (
-      <AddressForm
-        nextStep={nextStep}
-        checkoutToken={checkoutToken}
-        next={next}
-      />
+      <AddressForm nextStep={nextStep} checkoutToken={checkoutToken} />
     ) : (
       <PaymentForm
         nextStep={nextStep}
         backStep={backStep}
-        shippingData={shippingData}
         checkoutToken={checkoutToken}
       />
     );
 
-  console.log(currStep);
+  //   console.log(currStep);
 
   return (
     <div>
