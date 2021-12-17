@@ -5,15 +5,15 @@ import { commerce } from "../../library/commerce";
 import FormInput from "./FormInput";
 
 const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
-  const [shipCountries, setShipCountries] = useState([]);
+  const [shippingCountries, setShippingCountries] = useState([]);
   const [shipCountry, setShipCountry] = useState("");
-  const [shipSubdivisions, setShipSubdivisions] = useState([]);
+  const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
   const [shipSubdiv, setShipSubdiv] = useState("");
 
   const methods = useForm();
 
   // Shipping Countries
-  const countries = Object.entries(shipCountries).map(
+  const countries = Object.entries(shippingCountries).map(
     ([countryCode, countryName]) => ({
       id: countryCode,
       label: countryName,
@@ -25,7 +25,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
       checkoutToken
     );
     console.log(countries);
-    setShipCountries(countries);
+    setShippingCountries(countries);
     setShipCountry(Object.keys(countries)[0]);
   };
 
@@ -35,23 +35,23 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
   }, [checkoutToken.id]);
 
   // Shipping Subdivisions
-  const subdivisions = Object.entries(shipSubdivisions).map(
+  const subdivisions = Object.entries(shippingSubdivisions).map(
     ([countryCode, countryName]) => ({
       id: countryCode,
       label: countryName,
     })
   );
 
-  const fetchShipSubdivisions = async (countryCode) => {
+  const fetchShippingSubdivisions = async (countryCode) => {
     const { subdivisions } = await commerce.services.localeListSubdivisions(
       countryCode
     );
-    setShipSubdivisions(subdivisions);
+    setShippingSubdivisions(subdivisions);
     setShipSubdiv(Object.keys(subdivisions)[0]);
   };
 
   useEffect(() => {
-    if (shipCountry) fetchShipSubdivisions(shipCountry);
+    if (shipCountry) fetchShippingSubdivisions(shipCountry);
   }, [shipCountry]);
 
   console.log(shipCountry, shipSubdiv);
