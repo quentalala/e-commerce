@@ -7,6 +7,7 @@ const Checkout = ({ cart }) => {
   const [currStep, setCurrStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState("");
 
+  // Generate cart token
   useEffect(() => {
     const generateToken = async () => {
       try {
