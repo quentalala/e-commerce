@@ -22,19 +22,13 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
     })
   );
 
-  const fetchShipCountries = async (checkoutToken) => {
+  const fetchShippingCountries = async (checkoutTokenId) => {
     const { countries } = await commerce.services.localeListShippingCountries(
-      checkoutToken
+      checkoutTokenId
     );
-    console.log(countries);
     setShippingCountries(countries);
     setShippingCountry(Object.keys(countries)[0]);
   };
-
-  useEffect(() => {
-    console.log(checkoutToken.id);
-    fetchShipCountries(checkoutToken.id);
-  }, [checkoutToken.id]);
 
   // Shipping Subdivisions
   const subdivisions = Object.entries(shippingSubdivisions).map(
@@ -51,10 +45,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
     setShippingSubdivisions(subdivisions);
     setShippingSubdivision(Object.keys(subdivisions)[0]);
   };
-
-  useEffect(() => {
-    if (shippingCountry) fetchShippingSubdivisions(shippingCountry);
-  }, [shippingCountry]);
 
   // Shipping Options
   const options = shippingOptions.map((shipOp) => {
@@ -74,10 +64,18 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
       { country, region }
     );
 
-    console.log(options);
+    // console.log(options);
     setShippingOptions(options);
     setShippingOption(options[0].id);
   };
+
+  useEffect(() => {
+    fetchShippingCountries(checkoutToken.id);
+  }, [checkoutToken.id]);
+
+  useEffect(() => {
+    if (shippingCountry) fetchShippingSubdivisions(shippingCountry);
+  }, [shippingCountry]);
 
   useEffect(() => {
     if (shippingSubdivision) {
@@ -89,7 +87,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
     }
   }, [checkoutToken.id, shippingCountry, shippingSubdivision]);
 
-  console.log(shippingCountry, shippingSubdivision);
+  console.log(countries);
 
   return (
     <>
@@ -109,7 +107,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
             >
               {countries.map((country) => {
                 return (
-                  <option value={country.label} key={country.id}>
+                  <option value={country.id} key={country.id}>
                     {country.label}
                   </option>
                 );
@@ -121,7 +119,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
             >
               {subdivisions.map((subdiv) => {
                 return (
-                  <option value={subdiv.label} key={subdiv.id}>
+                  <option value={subdiv.id} key={subdiv.id}>
                     {subdiv.label}
                   </option>
                 );

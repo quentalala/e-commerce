@@ -55,8 +55,6 @@ const Checkout = ({ cart }) => {
       />
     );
 
-  //   console.log(currStep);
-
   return (
     <div>
       <h1>Checkout</h1>

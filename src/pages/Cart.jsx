@@ -75,7 +75,14 @@ const Cart = ({
             <p>{`Number of items in cart: ${cart.total_items}`}</p>
             <button onClick={handleEmptyCart}>Empty Cart</button>
           </div>
-          <Link to="/checkout" style={{ textDecoration: "none" }}>
+          <Link
+            to="/checkout"
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             <button>Checkout</button>
           </Link>
         </div>
