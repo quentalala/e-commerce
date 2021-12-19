@@ -7,13 +7,19 @@ const FormInput = ({ name, label, required }) => {
   return (
     <div>
       <Controller
-        render={({ field }) => (
-          <input label={label} required={required} placeholder={`${label}*`} />
-        )}
+        render={({ field }) => {
+          return (
+            <input
+              {...field}
+              label={label}
+              placeholder={`${label}*`}
+              required={required}
+            />
+          );
+        }}
         control={control}
         name={name}
-        // label={label}
-        // required={required}
+        defaultValue=""
       />
     </div>
   );

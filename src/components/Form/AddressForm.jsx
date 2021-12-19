@@ -3,8 +3,9 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useEffect } from "react/cjs/react.development";
 import { commerce } from "../../library/commerce";
 import FormInput from "./FormInput";
+import { Link } from "react-router-dom";
 
-const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
+const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -64,7 +65,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
       { country, region }
     );
 
-    // console.log(options);
     setShippingOptions(options);
     setShippingOption(options[0].id);
   };
@@ -87,20 +87,29 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
     }
   }, [checkoutToken.id, shippingCountry, shippingSubdivision]);
 
-  console.log(countries);
-
   return (
     <>
       <h1>Shipping Address</h1>
       <FormProvider {...methods}>
-        <form>
+        <form
+          onSubmit={methods.handleSubmit((data) => {
+            next({
+              ...data,
+              shippingCountry,
+              shippingSubdivision,
+              shippingOption,
+            });
+          })}
+        >
           <div>
-            <FormInput required name="firstName" label="First name" />
-            <FormInput required name="lastName" label="Last name" />
-            <FormInput required name="address1" label="Address" />
-            <FormInput required name="email" label="Email" />
-            <FormInput required name="city" label="City" />
-            <FormInput required name="postalCode" label="Postal Code" />
+            <FormInput name="firstName" label="First name" />
+            <FormInput name="lastName" label="Last name" />
+            <FormInput name="address1" label="Address" />
+            <FormInput name="email" label="Email" />
+            <FormInput name="city" label="City" />
+            <FormInput name="postalCode" label="Postal Code" />
+            {/* <div>
+              <h3>Shipping Country</h3> */}
             <select
               value={shippingCountry}
               onChange={(event) => setShippingCountry(event.target.value)}
@@ -113,6 +122,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
                 );
               })}
             </select>
+            {/* </div> */}
+            {/* <div>
+              <h3>Shipping Subdivision</h3> */}
             <select
               value={shippingSubdivision}
               onChange={(event) => setShippingSubdivision(event.target.value)}
@@ -125,6 +137,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
                 );
               })}
             </select>
+            {/* </div>
+            <div>
+              <h3>Shipping Methods</h3> */}
             <select
               value={shippingOption}
               onChange={(event) => setShippingOption(event.target.value)}
@@ -137,11 +152,14 @@ const AddressForm = ({ nextStep, backStep, checkoutToken }) => {
                 );
               })}
             </select>
-            <button onClick={nextStep}>Proceed</button>
-            <button onClick={backStep}>Go back</button>
+            {/* </div> */}
+            <button type="submit">Proceed</button>
           </div>
         </form>
       </FormProvider>
+      <Link to="/cart">
+        <button>Go back to cart</button>
+      </Link>
     </>
   );
 };
