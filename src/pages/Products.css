@@ -11,13 +11,15 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
   text-decoration: none;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
+  /* outline: 1px solid; */
 }
 
 /* Product */
 .product-container {
   list-style-type: none;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0.5px;
   width: auto;
+  outline: 1px solid;
 }
