@@ -28,6 +28,8 @@ const ProductView = ({ handleAddToCart }) => {
 
   let regex = /(<([^>]+)>)/gi;
 
+  console.log(regex);
+
   return (
     <div>
       {/* <h1 className="page-title">Product Page</h1> */}
@@ -49,10 +51,11 @@ const ProductView = ({ handleAddToCart }) => {
               Add to Cart
             </button>
             <h4>Description</h4>
-            <p>
+            <p className="productview-description">
               {product.description
-                ? product.description.replace(regex, "")
-                : null}
+                ? product.description.replace(regex, "\n")
+                : // ? product.description.replace(regex, "")
+                  null}
             </p>
           </div>
         </div>
