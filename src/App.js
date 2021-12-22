@@ -52,13 +52,7 @@ function App() {
   };
 
   const handleSearchProducts = (event) => {
-    console.log(event.target.value);
     setSearch(event.target.value);
-
-    console.log(
-      products.filter((product) => product.name.includes(search)),
-      search
-    );
   };
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {

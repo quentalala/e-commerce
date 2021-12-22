@@ -11,41 +11,63 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
           <img src="" alt="Logo" />
         </Link>
       </div>
-      <div className="navbar-container">
+      <div className="header-right">
+        <div className="header-search">
+          <div>
+            {displaySearch ? (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="header-searchbar"
+                  onChange={handleSearchProducts}
+                />
+                {search && (
+                  <ul
+                    className="search-results"
+                    style={{
+                      border: "1px solid black",
+                      zIndex: 99,
+                      padding: 0,
+                    }}
+                  >
+                    {products
+                      .filter((product) => product.name.includes(search))
+                      .map((item) => {
+                        return (
+                          <Link
+                            to={`/products/${item.id}`}
+                            key={item.id}
+                            style={{
+                              border: "1px solid lightgray",
+                              textDecoration: "none",
+                              listStyle: "none",
+                            }}
+                          >
+                            <li>{item.name}</li>
+                          </Link>
+                        );
+                      })}
+                  </ul>
+                )}
+              </div>
+            ) : null}
+          </div>
+          <button
+            onClick={() => setDisplaySearch(!displaySearch)}
+            className="search-btn"
+          >
+            <div className="magnify-img-wrapper">
+              <img
+                src={process.env.PUBLIC_URL + "/images/magnify.png"}
+                alt=""
+                className="magnify-img"
+              />
+            </div>
+          </button>
+        </div>
         <nav>
           <ul className="navbar">
-            <li className="header-search">
-              <div>
-                {displaySearch ? (
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      className="header-searchbar"
-                      onChange={handleSearchProducts}
-                    />
-                    {search && (
-                      <ul className="search-results">
-                        {products
-                          .filter((product) => product.name.includes(search))
-                          .map((item) => {
-                            return <li key={item.id}>{item.name}</li>;
-                          })}
-                      </ul>
-                    )}
-                  </div>
-                ) : null}
-              </div>
-              <button onClick={() => setDisplaySearch(!displaySearch)}>
-                <div className="magnify-img-wrapper">
-                  <img
-                    src={process.env.PUBLIC_URL + "/images/magnify.png"}
-                    alt=""
-                    className="magnify-img"
-                  />
-                </div>
-              </button>
-            </li>
             <Link to="/products" style={{ textDecoration: "none" }}>
               <li className="header-products">Products</li>
             </Link>

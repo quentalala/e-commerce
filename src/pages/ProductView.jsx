@@ -28,8 +28,6 @@ const ProductView = ({ handleAddToCart }) => {
 
   let regex = /(<([^>]+)>)/gi;
 
-  console.log(regex);
-
   return (
     <div>
       {/* <h1 className="page-title">Product Page</h1> */}
