@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = ({ inCart, handleSearchProducts }) => {
+const Header = ({ inCart, products, search, handleSearchProducts }) => {
   const [displaySearch, setDisplaySearch] = useState(false);
   return (
     <header className="header">
@@ -17,12 +17,23 @@ const Header = ({ inCart, handleSearchProducts }) => {
             <li className="header-search">
               <div>
                 {displaySearch ? (
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="header-searchbar"
-                    onChange={handleSearchProducts}
-                  />
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      className="header-searchbar"
+                      onChange={handleSearchProducts}
+                    />
+                    {search && (
+                      <ul className="search-results">
+                        {products
+                          .filter((product) => product.name.includes(search))
+                          .map((item) => {
+                            return <li key={item.id}>{item.name}</li>;
+                          })}
+                      </ul>
+                    )}
+                  </div>
                 ) : null}
               </div>
               <button onClick={() => setDisplaySearch(!displaySearch)}>
