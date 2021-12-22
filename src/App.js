@@ -15,6 +15,7 @@ function App() {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [search, setSearch] = useState("");
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -50,6 +51,11 @@ function App() {
     setCart(newCart);
   };
 
+  const handleSearchProducts = (event) => {
+    console.log(event.target.value);
+    setSearch(event.target.value);
+  };
+
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(
@@ -72,7 +78,11 @@ function App() {
     <>
       <Router>
         <div className="App">
-          <Header inCart={cart.total_items} />
+          <Header
+            inCart={cart.total_items}
+            search={search}
+            handleSearchProducts={handleSearchProducts}
+          />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
