@@ -4,6 +4,9 @@ import "./Header.css";
 
 const Header = ({ inCart, products, search, handleSearchProducts }) => {
   const [displaySearch, setDisplaySearch] = useState(false);
+  // const [focusSearch, setFocusSearch] = useState(false)
+  // Can you make a state keep track on whether the input element is focused?
+
   return (
     <header className="header">
       <div className="header-logo">
@@ -41,12 +44,11 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
             </button>
           </div>
         </div>
-        <div>
+        <div className="search-results-wrapper">
           {search && (
             <ul
               className="header-search-results"
               style={{
-                border: "1px solid black",
                 zIndex: 99,
                 padding: 0,
               }}
