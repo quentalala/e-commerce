@@ -1,14 +1,13 @@
 import React from "react";
 import Product from "../components/Product";
 import { Link } from "react-router-dom";
-import "./Products.css";
 import { Grid } from "@mui/material";
 
 const Products = ({ products }) => {
   return (
     <>
       <h1 className="page-title">Products</h1>
-      <div className="products-container">
+      <div className="products-wrapper" style={{}}>
         <Grid
           container
           spacing={5}
@@ -32,8 +31,7 @@ const Products = ({ products }) => {
               >
                 <Link
                   to={`/products/${product.id}`}
-                  className="product-container"
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", listStyleType: "none" }}
                 >
                   <Product product={product} />
                 </Link>
