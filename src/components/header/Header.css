@@ -4,6 +4,7 @@
   justify-content: space-between;
   border-bottom: 1px solid #000000;
   height: 4rem;
+  background-color: #fafaff;
 }
 /* 2 parts, space-between ensures L & R header components */
 
@@ -17,7 +18,7 @@
 /* Right Header Component */
 .header-right {
   display: grid;
-  grid-template-columns: repeat(2, 200px);
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 62px 1fr;
 }
 
@@ -41,14 +42,7 @@
   margin: 0;
   padding: 0;
   border: none;
-  background-color: rgb(238, 238, 238);
-}
-
-.header-search-results {
-  position: relative;
-  grid-column: 1/2;
-  grid-row: 2/3;
-  z-index: 99;
+  background-image: linear-gradient(to left, #f4f4f4, #fafaff);
 }
 
 .search-results-wrapper {
@@ -59,6 +53,24 @@
   z-index: 100;
 }
 
+/* Container for search results that popup */
+.header-search-results {
+  position: relative;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  z-index: 99;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; */
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+.header-search-result {
+  margin: 1rem 0.5rem 1rem;
+}
+
 .header-search-result:hover {
   background-color: rgb(238, 238, 238);
 }
@@ -67,7 +79,7 @@
 .search-btn {
   border: none;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #fafaff;
 }
 
 /* Navbar for Products and Cart */
@@ -88,12 +100,6 @@
 
 .navbar li {
   margin: 0 0.5rem 0;
-}
-
-.header-cart,
-.header-products {
-  /* link font-color: blue to black */
-  color: #000000;
 }
 
 /* Cart */

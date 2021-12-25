@@ -10,7 +10,7 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
   return (
     <header className="header">
       <div className="header-logo">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "#000000" }}>
           <img src="" alt="Logo" />
         </Link>
       </div>
@@ -53,9 +53,19 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                 padding: 0,
               }}
             >
+              <h4 style={{ display: "flex", justifyContent: "center" }}>
+                {products.filter((product) =>
+                  product.name.toLowerCase().includes(search.toLowerCase())
+                ).length
+                  ? `Matching Products`
+                  : `No Matches :(`}
+              </h4>
               {products
-                .filter((product) => product.name.includes(search))
+                .filter((product) =>
+                  product.name.toLowerCase().includes(search.toLowerCase())
+                )
                 .map((item) => {
+                  // console.log(item);
                   return (
                     <Link
                       to={`/products/${item.id}`}
@@ -63,10 +73,19 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                       style={{
                         textDecoration: "none",
                         listStyle: "none",
+                        color: "#000000",
                         zIndex: 1000,
                       }}
                     >
-                      <li className="header-search-result">{item.name}</li>
+                      <li
+                        className="header-search-result"
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {item.name}
+                      </li>
                     </Link>
                   );
                 })}
@@ -75,11 +94,17 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
         </div>
         <nav className="navbar-wrapper">
           <ul className="navbar">
-            <Link to="/products" style={{ textDecoration: "none" }}>
-              <li className="header-products">Products</li>
+            <Link
+              to="/products"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
+              <li>Products</li>
             </Link>
-            <Link to="/cart" style={{ textDecoration: "none" }}>
-              <li className="header-cart">
+            <Link
+              to="/cart"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
+              <li>
                 <div className="cart-img-wrap">
                   <img
                     src={process.env.PUBLIC_URL + "/images/cart.png"}
