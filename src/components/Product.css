@@ -1,8 +1,17 @@
+.product-wrapper {
+  border: 1px solid #f5f5f5;
+}
+
 .product {
   align-items: center;
   height: 100%;
   width: 345px;
-  border: 1px solid;
+  border-radius: 15px;
+  box-shadow: 16px 16px 0px -15px white, -16px -16px 0px -15px white;
+}
+
+.product:hover {
+  box-shadow: none;
 }
 
 .product-desc {
@@ -17,8 +26,6 @@
   margin: 0 1rem 0 1rem;
   white-space: nowrap;
   overflow: scroll;
-  /* text-overflow: ellipsis; */
-  /* border: 1px solid; */
 }
 
 .product-img-container {
