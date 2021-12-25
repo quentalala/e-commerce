@@ -2,6 +2,7 @@
   align-items: center;
   height: 100%;
   width: 345px;
+  border: 1px solid;
 }
 
 .product-desc {
