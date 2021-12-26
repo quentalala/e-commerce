@@ -29,7 +29,9 @@ const Cart = ({
                         className="cart-item-img"
                       />
                     </td>
-                    <td className="cart-item-name">{item.name}</td>
+                    <td className="cart-item-name">
+                      <h3>{item.name}</h3>
+                    </td>
                     <td className="cart-item-qty">
                       <div></div>
                       <button
@@ -55,11 +57,11 @@ const Cart = ({
                       onClick={() => handleDeleteFromCart(item.id)}
                       className="cart-item-rm"
                     >
-                      <div className="cart-item-rm-img-wrapper">
+                      <div className="delete-cart-item">
                         <img
                           src={process.env.PUBLIC_URL + "/images/garbage.png"}
                           alt="garbage bin"
-                          className="cart-item-rm-img"
+                          style={{ maxHeight: "100%", maxWidth: "100%" }}
                         />
                       </div>
                     </td>
@@ -70,21 +72,29 @@ const Cart = ({
           </table>
           <div className="cart-summary">
             <div>
-              <h2>Subtotal: {cart.subtotal.formatted_with_symbol}</h2>
+              <h2 className="cart-total">
+                Subtotal: {cart.subtotal.formatted_with_symbol}
+              </h2>
             </div>
             <p>{`Number of items in cart: ${cart.total_items}`}</p>
-            <button onClick={handleEmptyCart}>Empty Cart</button>
+            <div className="cart-buttons-wrapper">
+              <div className="cart-buttons">
+                <button className="empty-cart-btn" onClick={handleEmptyCart}>
+                  Empty Cart
+                </button>
+                <Link
+                  to="/checkout"
+                  style={{
+                    textDecoration: "none",
+                    // display: "flex",
+                    // justifyContent: "center",
+                  }}
+                >
+                  <button className="checkout-btn">Checkout</button>
+                </Link>{" "}
+              </div>
+            </div>
           </div>
-          <Link
-            to="/checkout"
-            style={{
-              textDecoration: "none",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <button>Checkout</button>
-          </Link>
         </div>
       </>
     );
