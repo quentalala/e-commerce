@@ -6,7 +6,15 @@ import { Grid } from "@mui/material";
 const Products = ({ products }) => {
   return (
     <>
-      <h1 className="page-title">Products</h1>
+      <h1
+        style={{
+          margin: "3rem 0 3rem",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        Products
+      </h1>
       <div className="products-wrapper" style={{}}>
         <Grid
           container

@@ -98,7 +98,7 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
               to="/products"
               style={{ textDecoration: "none", color: "#000000" }}
             >
-              <li>Products</li>
+              <li className="latest-arrivals">LATEST ARRIVALS</li>
             </Link>
             <Link
               to="/cart"

@@ -30,31 +30,41 @@ const ProductView = ({ handleAddToCart }) => {
 
   return (
     <div>
-      {/* <h1 className="page-title">Product Page</h1> */}
-      <div className="productview-wrapper">
-        <div className="productview-container">
-          <div className="productview-container-left">
-            <div className="productview-img-wrapper">
-              <img src={product.src} alt="" className="productview-img" />
+      <div className="pview-wrapper">
+        <div className="pview-container">
+          <div className="pview-left">
+            <div className="pview-img-wrapper">
+              <img src={product.src} alt="" className="pview-img" />
             </div>
           </div>
-          <div className="productview-desc">
-            <h1 className="productview-desc-title">{product.name}</h1>
-            <h3 className="productview-desc-price">{product.price}</h3>
-            <button
-              name="Add to cart"
-              className="add-to-cart-btn"
-              onClick={() => handleAddToCart(product.identification, 1)}
+          <div className="pview-right">
+            <h1 className="pview-title">{product.name}</h1>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
-              Add to Cart
-            </button>
-            <h4>Description</h4>
-            <p className="productview-description">
-              {product.description
-                ? product.description.replace(regex, "\n")
-                : // ? product.description.replace(regex, "")
-                  null}
-            </p>
+              <h3 className="pview-price">{product.price}</h3>
+              <button
+                name="Add to cart"
+                className="pview-cart-btn"
+                onClick={() => handleAddToCart(product.identification, 1)}
+              >
+                ADD TO CART
+              </button>
+            </div>
+
+            <div className="pview-desc">
+              <h4>Description</h4>
+              <p>
+                {product.description
+                  ? product.description.replace(regex, "\n")
+                  : // ? product.description.replace(regex, "")
+                    null}
+              </p>
+            </div>
           </div>
         </div>
       </div>

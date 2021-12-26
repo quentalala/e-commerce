@@ -51,6 +51,7 @@
   /* temp fix */
   margin-top: 2px;
   z-index: 100;
+  background-color: #ffffff;
 }
 
 /* Container for search results that popup */
@@ -59,9 +60,6 @@
   grid-column: 1/2;
   grid-row: 2/3;
   z-index: 99;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-evenly; */
   margin: 0;
   padding: 0;
   background-color: rgb(255, 255, 255);
@@ -100,6 +98,10 @@
 
 .navbar li {
   margin: 0 0.5rem 0;
+}
+
+.latest-arrivals:hover {
+  border-bottom: 1px solid #000000;
 }
 
 /* Cart */
