@@ -104,7 +104,6 @@
 }
 
 .cart-buttons-wrapper {
-  /* border: 1px solid red; */
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -112,14 +111,13 @@
 }
 
 .cart-buttons {
-  /* border: 1px solid red; */
   margin: 0 1rem 0;
 }
 
 .cart-buttons button {
   border: none;
   margin: 0 0 0 1rem;
-  padding: 0 0.5rem 0;
+  padding: 0.5rem;
   cursor: pointer;
   border-radius: 5px;
 }

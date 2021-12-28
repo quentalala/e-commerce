@@ -89,77 +89,139 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
 
   return (
     <>
-      <h1>Shipping Address</h1>
-      <FormProvider {...methods}>
-        <form
-          onSubmit={methods.handleSubmit((data) => {
-            next({
-              ...data,
-              shippingCountry,
-              shippingSubdivision,
-              shippingOption,
-            });
-          })}
-        >
-          <div>
-            <FormInput name="firstName" label="First name" />
-            <FormInput name="lastName" label="Last name" />
-            <FormInput name="address1" label="Address" />
-            <FormInput name="email" label="Email" />
-            <FormInput name="city" label="City" />
-            <FormInput name="postalCode" label="Postal Code" />
-            {/* <div>
-              <h3>Shipping Country</h3> */}
-            <select
-              value={shippingCountry}
-              onChange={(event) => setShippingCountry(event.target.value)}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <FormProvider {...methods}>
+          <form
+            onSubmit={methods.handleSubmit((data) => {
+              next({
+                ...data,
+                shippingCountry,
+                shippingSubdivision,
+                shippingOption,
+              });
+            })}
+            style={{
+              // border: "1px solid red",
+              width: "50vw",
+            }}
+          >
+            <h1 style={{ display: "flex", justifyContent: "center" }}>
+              Shipping Address
+            </h1>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                // border: "1px solid red",
+              }}
             >
-              {countries.map((country) => {
-                return (
-                  <option value={country.id} key={country.id}>
-                    {country.label}
-                  </option>
-                );
-              })}
-            </select>
-            {/* </div> */}
-            {/* <div>
-              <h3>Shipping Subdivision</h3> */}
-            <select
-              value={shippingSubdivision}
-              onChange={(event) => setShippingSubdivision(event.target.value)}
-            >
-              {subdivisions.map((subdiv) => {
-                return (
-                  <option value={subdiv.id} key={subdiv.id}>
-                    {subdiv.label}
-                  </option>
-                );
-              })}
-            </select>
-            {/* </div>
-            <div>
-              <h3>Shipping Methods</h3> */}
-            <select
-              value={shippingOption}
-              onChange={(event) => setShippingOption(event.target.value)}
-            >
-              {options.map((option) => {
-                return (
-                  <option value={option.id} key={option.id}>
-                    {option.label}
-                  </option>
-                );
-              })}
-            </select>
-            {/* </div> */}
-            <button type="submit">Proceed</button>
-          </div>
-        </form>
-      </FormProvider>
-      <Link to="/cart">
-        <button>Go back to cart</button>
-      </Link>
+              <div>
+                <FormInput name="firstName" label="First name" />
+                <FormInput name="lastName" label="Last name" />
+                <FormInput name="address1" label="Address" />
+                <FormInput name="email" label="Email" />
+                <FormInput name="city" label="City" />
+                <FormInput name="postalCode" label="Postal Code" />
+              </div>
+              <div>
+                <div
+                  style={{
+                    // border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4>Shipping Country</h4>
+                  <select
+                    value={shippingCountry}
+                    onChange={(event) => setShippingCountry(event.target.value)}
+                    style={{ width: "80%" }}
+                  >
+                    {countries.map((country) => {
+                      return (
+                        <option value={country.id} key={country.id}>
+                          {country.label}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div
+                  style={{
+                    // border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4>Shipping Subdivision</h4>
+                  <select
+                    value={shippingSubdivision}
+                    onChange={(event) =>
+                      setShippingSubdivision(event.target.value)
+                    }
+                    style={{ width: "80%" }}
+                  >
+                    {subdivisions.map((subdiv) => {
+                      return (
+                        <option value={subdiv.id} key={subdiv.id}>
+                          {subdiv.label}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div
+                  style={{
+                    // border: "1px solid red",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4>Shipping Methods</h4>
+                  <select
+                    value={shippingOption}
+                    onChange={(event) => setShippingOption(event.target.value)}
+                    style={{ width: "80%" }}
+                  >
+                    {options.map((option) => {
+                      return (
+                        <option value={option.id} key={option.id}>
+                          {option.label}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <Link to="/cart">
+                  <button style={{ cursor: "pointer" }}>Go back to cart</button>
+                </Link>
+                <button
+                  type="submit"
+                  style={{ margin: "1rem", cursor: "pointer" }}
+                >
+                  Proceed
+                </button>
+              </div>
+            </div>
+          </form>
+        </FormProvider>
+      </div>
     </>
   );
 };

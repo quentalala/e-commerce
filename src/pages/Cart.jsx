@@ -104,7 +104,7 @@ const Cart = ({
 
   return (
     <>
-      <h1 className="page-title">Cart</h1>
+      <h1 className="page-title">Your Cart</h1>
       <div className="cart-container">
         {!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}
       </div>

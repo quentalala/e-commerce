@@ -14,6 +14,11 @@ const FormInput = ({ name, label, required }) => {
               label={label}
               placeholder={`${label}*`}
               required={required}
+              style={{
+                width: "auto",
+                padding: 0,
+                margin: 0,
+              }}
             />
           );
         }}
