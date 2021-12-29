@@ -64,33 +64,40 @@ const PaymentForm = ({
 
   return (
     <>
-      <div>PaymentForm</div>
-      <Elements stripe={stripePromise}>
-        <ElementsConsumer>
-          {({ elements, stripe }) => (
-            <form
-              onSubmit={(e) => handleSubmit(e, elements, stripe)}
-              style={{ width: 500, border: "1px solid lightgrey" }}
-            >
-              <CardElement />
-              <br />
-              <br />
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Elements stripe={stripePromise}>
+          <ElementsConsumer>
+            {({ elements, stripe }) => (
+              <form
+                onSubmit={(e) => handleSubmit(e, elements, stripe)}
+                style={{ width: 500, border: "1px solid lightgrey" }}
               >
-                <button type="submit" disabled={!stripe}>
-                  Proceed to pay{" "}
-                  {checkoutToken.live.subtotal.formatted_with_symbol}
-                </button>
-                <button onClick={backStep}>Go back</button>
-              </div>
-            </form>
-          )}
-        </ElementsConsumer>
-      </Elements>
+                <CardElement />
+                <br />
+                <br />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <button onClick={backStep}>Go back</button>
+                  <button type="submit" disabled={!stripe}>
+                    Proceed to pay{" "}
+                    {checkoutToken.live.subtotal.formatted_with_symbol}
+                  </button>
+                </div>
+              </form>
+            )}
+          </ElementsConsumer>
+        </Elements>
+      </div>
     </>
   );
 };

@@ -5,7 +5,11 @@ const FormInput = ({ name, label, required }) => {
   const { control } = useFormContext();
 
   return (
-    <div>
+    <div
+      style={{
+        margin: "0.5rem",
+      }}
+    >
       <Controller
         render={({ field }) => {
           return (
