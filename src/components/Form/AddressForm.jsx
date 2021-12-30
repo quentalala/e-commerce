@@ -107,7 +107,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
               });
             })}
             style={{
-              // border: "1px solid red",
               width: "max-content",
             }}
           >
@@ -119,7 +118,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   justifyContent: "center",
                   alignItems: "center",
                   border: "1px solid lightgray",
-                  borderRadius: 5,
+                  padding: "5rem",
                 }}
               >
                 <div>
@@ -127,7 +126,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                     style={{
                       display: "flex",
                       justifyContent: "center",
-                      margin: "3rem 0 0",
                     }}
                   >
                     Shipping Address
@@ -152,12 +150,10 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                 <div>
                   <div
                     style={{
-                      // border: "1px solid red",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
                       alignItems: "center",
-                      // marginTop: "1.5rem",
                     }}
                   >
                     <h4>Shipping Country</h4>
@@ -179,7 +175,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   </div>
                   <div
                     style={{
-                      // border: "1px solid red",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
@@ -205,7 +200,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   </div>
                   <div
                     style={{
-                      // border: "1px solid red",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",
