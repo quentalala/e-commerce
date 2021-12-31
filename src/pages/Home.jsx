@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <>
       <div className="homepage-container">
-        <div className="homepage-banner">WELCOME!</div>
-        <div className="homepage-banner">THIS STORE</div>
-        <div className="homepage-banner">IS UNDER CONSTRUCTION</div>
+        <div className="homepage-banner1"></div>
+        <div className="homepage-banner">WELCOME</div>
+        <div className="homepage-banner3"></div>
       </div>
     </>
   );

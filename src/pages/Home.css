@@ -9,3 +9,17 @@
   align-items: center;
   border: 1px solid lightgray;
 }
+
+.homepage-banner1 {
+  background-image: url("../../src/images/concrete.jpg");
+  background-position: top;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+}
+
+.homepage-banner3 {
+  background-image: url("../../src/images/concrete.jpg");
+  background-position: bottom;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+}

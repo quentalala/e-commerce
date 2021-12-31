@@ -89,7 +89,7 @@ const ProductView = ({ handleAddToCart }) => {
                 </div>
               </div>
             </Grid>
-          </Grid>{" "}
+          </Grid>
         </div>
       </div>
     </div>
