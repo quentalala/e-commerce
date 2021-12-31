@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "../library/commerce";
 import { useParams } from "react-router-dom";
+import { Grid } from "@mui/material";
 import "./ProductView.css";
 
 const ProductView = ({ handleAddToCart }) => {
@@ -31,41 +32,64 @@ const ProductView = ({ handleAddToCart }) => {
   return (
     <div>
       <div className="pview-wrapper">
+        {" "}
         <div className="pview-container">
-          <div className="pview-left">
-            <div className="pview-img-wrapper">
-              <img src={product.src} alt="" className="pview-img" />
-            </div>
-          </div>
-          <div className="pview-right">
-            <h1 className="pview-title">{product.name}</h1>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <h3 className="pview-price">{product.price}</h3>
-              <button
-                name="Add to cart"
-                className="pview-cart-btn"
-                onClick={() => handleAddToCart(product.identification, 1)}
-              >
-                ADD TO CART
-              </button>
-            </div>
+          <Grid container justifyContent={"center"} alignItems={"center"}>
+            <Grid item xs={12} sm={12} md={6} xl={6}>
+              <div className="pview-left">
+                <div className="pview-img-wrapper">
+                  <img src={product.src} alt="" className="pview-img" />
+                </div>
+              </div>
+            </Grid>
 
-            <div className="pview-desc">
-              <h4>Description</h4>
-              <p>
-                {product.description
-                  ? product.description.replace(regex, "\n")
-                  : // ? product.description.replace(regex, "")
-                    null}
-              </p>
-            </div>
-          </div>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              xl={6}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <div
+                style={{
+                  width: "70%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <div className="pview-right">
+                  <h1 className="pview-title">{product.name}</h1>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h3 className="pview-price">{product.price}</h3>
+                    <button
+                      name="Add to cart"
+                      className="pview-cart-btn"
+                      onClick={() => handleAddToCart(product.identification, 1)}
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
+
+                  <div className="pview-desc">
+                    <h4>Description</h4>
+                    <p>
+                      {product.description
+                        ? product.description.replace(regex, "\n")
+                        : // ? product.description.replace(regex, "")
+                          null}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Grid>
+          </Grid>{" "}
         </div>
       </div>
     </div>

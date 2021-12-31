@@ -6,9 +6,12 @@
 }
 
 .pview-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
   width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid lightgray;
 }
 
