@@ -64,6 +64,7 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                 .filter((product) =>
                   product.name.toLowerCase().includes(search.toLowerCase())
                 )
+                .slice(0, 5) // limit search results to 5 items
                 .map((item) => {
                   // console.log(item);
                   return (
