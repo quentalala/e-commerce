@@ -81,6 +81,7 @@ function App() {
             inCart={cart.total_items}
             products={products}
             search={search}
+            setSearch={setSearch}
             handleSearchProducts={handleSearchProducts}
           />
           <Routes>

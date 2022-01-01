@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = ({ inCart, products, search, handleSearchProducts }) => {
+const Header = ({
+  inCart,
+  products,
+  search,
+  setSearch,
+  handleSearchProducts,
+}) => {
   const [displaySearch, setDisplaySearch] = useState(false);
-  // const [focusSearch, setFocusSearch] = useState(false)
-  // Can you make a state keep track on whether the input element is focused?
+
+  const unfocusSearch = () => {
+    setDisplaySearch(!displaySearch);
+    setSearch("");
+  };
 
   return (
     <header className="header">
@@ -30,13 +39,13 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                 </div>
               ) : null}
             </div>
-            <button
-              onClick={() => setDisplaySearch(!displaySearch)}
-              className="search-btn"
-            >
+            <button onClick={unfocusSearch} className="search-btn">
               <div className="magnify-img-wrapper">
                 <img
-                  src={process.env.PUBLIC_URL + "/images/magnify.png"}
+                  src={
+                    process.env.PUBLIC_URL +
+                    `${displaySearch ? "/images/x.png" : "/images/magnify.png"}`
+                  }
                   alt=""
                   className="magnify-img"
                 />
@@ -44,7 +53,7 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
             </button>
           </div>
         </div>
-        <div className="search-results-wrapper">
+        <div className="search-results-wrapper" onBlur={unfocusSearch}>
           {search && (
             <ul
               className="header-search-results"
@@ -66,7 +75,6 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                 )
                 .slice(0, 5) // limit search results to 5 items
                 .map((item) => {
-                  // console.log(item);
                   return (
                     <Link
                       to={`/products/${item.id}`}
@@ -77,6 +85,7 @@ const Header = ({ inCart, products, search, handleSearchProducts }) => {
                         color: "#000000",
                         zIndex: 1000,
                       }}
+                      onClick={unfocusSearch}
                     >
                       <li
                         className="header-search-result"
