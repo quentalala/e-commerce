@@ -6,8 +6,6 @@
 }
 
 .pview-container {
-  /* display: grid; */
-  /* grid-template-columns: repeat(2, 1fr); */
   width: 90%;
   display: flex;
   align-items: center;
@@ -28,7 +26,6 @@
   align-items: center;
   width: auto;
   height: 600px;
-  /* border: 1px solid red; */
 }
 .pview-img {
   max-width: 90%;

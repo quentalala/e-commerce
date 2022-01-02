@@ -1,5 +1,5 @@
 import React from "react";
-import Product from "../components/Product";
+import Product from "../components/Product/Product";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 
@@ -13,7 +13,7 @@ const Products = ({ products }) => {
           justifyContent: "center",
         }}
       >
-        Products
+        PRODUCTS
       </h1>
       <div className="products-wrapper" style={{}}>
         <Grid

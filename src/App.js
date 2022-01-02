@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { commerce } from "./library/commerce";
-import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./pages/Products";
 import ProductView from "./pages/ProductView";

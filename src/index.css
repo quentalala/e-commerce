@@ -2,10 +2,15 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Spline Sans", sans-serif;
 }
 
 .homepage-title {
+  display: flex;
+  justify-content: center;
+}
+
+.page-title {
   display: flex;
   justify-content: center;
 }
