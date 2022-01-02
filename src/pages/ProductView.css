@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid lightgray;
+  border: 1px solid #f5f5f5;
 }
 
 /* Left Side of Container */

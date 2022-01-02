@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div className="homepage-container">
         <div className="homepage-banner1"></div>
-        <div className="homepage-banner">WELCOME</div>
+        <div className="homepage-banner2">WELCOME TO MY ONLINE SHOP :)</div>
         <div className="homepage-banner3"></div>
       </div>
     </>

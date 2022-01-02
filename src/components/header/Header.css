@@ -2,7 +2,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #fafaff;
   height: 4rem;
   background-color: #fafaff;
 }
@@ -46,7 +46,7 @@
 }
 
 .search-results-wrapper {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-top: none;
   /* temp fix */
   margin-top: 2px;

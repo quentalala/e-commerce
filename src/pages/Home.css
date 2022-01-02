@@ -1,13 +1,7 @@
 .homepage-container {
   display: grid;
   grid-template-rows: repeat(3, 40vh);
-}
-
-.homepage-banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid lightgray;
+  /* grid-template-rows: repeat(3, 40vh); */
 }
 
 .homepage-banner1 {
@@ -15,6 +9,14 @@
   background-position: top;
   /* background-repeat: no-repeat; */
   background-size: cover;
+}
+
+.homepage-banner2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  background-color: #fafaff;
 }
 
 .homepage-banner3 {
