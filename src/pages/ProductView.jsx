@@ -29,6 +29,8 @@ const ProductView = ({ handleAddToCart }) => {
 
   let regex = /(<([^>]+)>)/gi;
 
+  console.log(product.description, typeof product.description);
+
   return (
     <div>
       <div className="pview-wrapper">
@@ -77,13 +79,15 @@ const ProductView = ({ handleAddToCart }) => {
                     </button>
                   </div>
 
-                  <div className="pview-desc">
+                  <div
+                    className="pview-desc"
+                    style={{ whiteSpace: "pre-line" }}
+                  >
                     <h4>Description</h4>
                     <p>
                       {product.description
                         ? product.description.replace(regex, "\n")
-                        : // ? product.description.replace(regex, "")
-                          null}
+                        : null}
                     </p>
                   </div>
                 </div>
