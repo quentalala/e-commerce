@@ -1,0 +1,24 @@
+.address-buttons button {
+  border: none;
+  margin: 0 0 0 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.back-to-cart-btn {
+  background-color: #f6f6f6;
+}
+
+.back-to-cart-btn:hover {
+  background-color: #fafaff;
+}
+
+.proceed-btn {
+  background-color: #272727;
+  color: #ffffff;
+}
+
+.proceed-btn:hover {
+  background-color: #5c5c5c;
+}

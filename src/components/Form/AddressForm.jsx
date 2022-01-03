@@ -4,6 +4,7 @@ import { useEffect } from "react/cjs/react.development";
 import { commerce } from "../../library/commerce";
 import FormInput from "./FormInput";
 import { Link } from "react-router-dom";
+import "./AddressForm.css";
 
 const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
@@ -231,13 +232,20 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   justifyContent: "flex-end",
                   alignItems: "center",
                 }}
+                className="address-buttons"
               >
                 <Link to="/cart">
-                  <button style={{ cursor: "pointer" }}>Go back to cart</button>
+                  <button
+                    style={{ cursor: "pointer" }}
+                    className="back-to-cart-btn"
+                  >
+                    Go back to cart
+                  </button>
                 </Link>
                 <button
                   type="submit"
                   style={{ margin: "1rem", cursor: "pointer" }}
+                  className="proceed-btn"
                 >
                   Proceed
                 </button>
