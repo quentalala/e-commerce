@@ -20,7 +20,7 @@ const Header = ({
     <header className="header">
       <div className="header-logo">
         <Link to="/" style={{ textDecoration: "none", color: "#000000" }}>
-          <img src="" alt="Logo" />
+          <img src="" alt="LOGO" />
         </Link>
       </div>
       <div className="header-right">

@@ -97,7 +97,7 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
 
   return (
     <div>
-      <h1 style={{ display: "flex", justifyContent: "center" }}>Checkout</h1>
+      <h1 style={{ display: "flex", justifyContent: "center" }}>CHECKOUT</h1>
       <div>{currStep === 2 ? <Confirmation /> : checkoutToken && <Form />}</div>
     </div>
   );

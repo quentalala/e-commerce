@@ -9,7 +9,7 @@ const Cart = ({
   handleUpdateCart,
 }) => {
   const EmptyCart = () => {
-    return <div>Cart is empty :(</div>;
+    return <div>CART IS EMPTY</div>;
   };
 
   const NonEmptyCart = () => {
@@ -73,14 +73,14 @@ const Cart = ({
           <div className="cart-summary">
             <div>
               <h2 className="cart-total">
-                Subtotal: {cart.subtotal.formatted_with_symbol}
+                SUBTOTAL: {cart.subtotal.formatted_with_symbol}
               </h2>
             </div>
             <p>{`Number of items in cart: ${cart.total_items}`}</p>
             <div className="cart-buttons-wrapper">
               <div className="cart-buttons">
                 <button className="empty-cart-btn" onClick={handleEmptyCart}>
-                  Empty Cart
+                  EMPTY CART
                 </button>
                 <Link
                   to="/checkout"
@@ -90,8 +90,8 @@ const Cart = ({
                     // justifyContent: "center",
                   }}
                 >
-                  <button className="checkout-btn">Checkout</button>
-                </Link>{" "}
+                  <button className="checkout-btn">CHECKOUT</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ const Cart = ({
 
   return (
     <>
-      <h1 className="page-title">Your Cart</h1>
+      <h1 className="page-title">CART</h1>
       <div className="cart-container">
         {!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}
       </div>

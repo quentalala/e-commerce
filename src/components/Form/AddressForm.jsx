@@ -226,6 +226,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   </div>
                 </div>
               </div>
+              {/* Might have to put the buttons inside the grey box */}
               <div
                 style={{
                   display: "flex",
@@ -239,7 +240,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                     style={{ cursor: "pointer" }}
                     className="back-to-cart-btn"
                   >
-                    Go back to cart
+                    BACK TO CART
                   </button>
                 </Link>
                 <button
@@ -247,7 +248,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   style={{ margin: "1rem", cursor: "pointer" }}
                   className="proceed-btn"
                 >
-                  Proceed
+                  PROCEED
                 </button>
               </div>
             </div>
