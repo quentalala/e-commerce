@@ -70,7 +70,8 @@
 }
 
 .header-search-result:hover {
-  background-color: rgb(238, 238, 238);
+  /* background-color: rgb(238, 238, 238); */
+  text-decoration: underline;
 }
 
 /* Search Bar Button */
