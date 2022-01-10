@@ -111,145 +111,150 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
               width: "max-content",
             }}
           >
-            <div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  border: "1px solid lightgray",
-                  padding: "5rem",
-                }}
-              >
-                <div>
-                  <h3
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                    }}
-                  >
-                    Shipping Address
-                  </h3>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "1rem ",
-                    }}
-                  >
-                    <FormInput name="firstName" label="First name" />
-                    <FormInput name="lastName" label="Last name" />
-                    <FormInput name="address1" label="Address" />
-                    <FormInput name="email" label="Email" />
-                    <FormInput name="city" label="City" />
-                    <FormInput name="postalCode" label="Postal Code" />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                border: "1px solid lightgray",
+                padding: "2rem 0 0",
+              }}
+            >
+              <div>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div>
+                    <h3
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                      }}
+                    >
+                      Shipping Address
+                    </h3>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        margin: "1rem ",
+                      }}
+                    >
+                      <FormInput name="firstName" label="First name" />
+                      <FormInput name="lastName" label="Last name" />
+                      <FormInput name="address1" label="Address" />
+                      <FormInput name="email" label="Email" />
+                      <FormInput name="city" label="City" />
+                      <FormInput name="postalCode" label="Postal Code" />
+                    </div>
                   </div>
+                  <div>
+                    <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <h4>Shipping Country</h4>
+                        <select
+                          value={shippingCountry}
+                          onChange={(event) =>
+                            setShippingCountry(event.target.value)
+                          }
+                          style={{ width: "80%" }}
+                        >
+                          {countries.map((country) => {
+                            return (
+                              <option value={country.id} key={country.id}>
+                                {country.label}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <h4>Shipping Subdivision</h4>
+                        <select
+                          value={shippingSubdivision}
+                          onChange={(event) =>
+                            setShippingSubdivision(event.target.value)
+                          }
+                          style={{ width: "80%" }}
+                        >
+                          {subdivisions.map((subdiv) => {
+                            return (
+                              <option value={subdiv.id} key={subdiv.id}>
+                                {subdiv.label}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <h4>Shipping Methods</h4>
+                        <select
+                          value={shippingOption}
+                          onChange={(event) =>
+                            setShippingOption(event.target.value)
+                          }
+                          style={{ width: "80%" }}
+                        >
+                          {options.map((option) => {
+                            return (
+                              <option value={option.id} key={option.id}>
+                                {option.label}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
                 </div>
-                <div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h4>Shipping Country</h4>
-                    <select
-                      value={shippingCountry}
-                      onChange={(event) =>
-                        setShippingCountry(event.target.value)
-                      }
-                      style={{ width: "80%" }}
-                    >
-                      {countries.map((country) => {
-                        return (
-                          <option value={country.id} key={country.id}>
-                            {country.label}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h4>Shipping Subdivision</h4>
-                    <select
-                      value={shippingSubdivision}
-                      onChange={(event) =>
-                        setShippingSubdivision(event.target.value)
-                      }
-                      style={{ width: "80%" }}
-                    >
-                      {subdivisions.map((subdiv) => {
-                        return (
-                          <option value={subdiv.id} key={subdiv.id}>
-                            {subdiv.label}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h4>Shipping Methods</h4>
-                    <select
-                      value={shippingOption}
-                      onChange={(event) =>
-                        setShippingOption(event.target.value)
-                      }
-                      style={{ width: "80%" }}
-                    >
-                      {options.map((option) => {
-                        return (
-                          <option value={option.id} key={option.id}>
-                            {option.label}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </div>
-                </div>
-              </div>
-              {/* Might have to put the buttons inside the grey box */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "center",
-                }}
-                className="address-buttons"
-              >
-                <Link to="/cart">
-                  <button
-                    style={{ cursor: "pointer" }}
-                    className="back-to-cart-btn"
-                  >
-                    BACK TO CART
-                  </button>
-                </Link>
-                <button
-                  type="submit"
-                  style={{ margin: "1rem", cursor: "pointer" }}
-                  className="proceed-btn"
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    margin: "2rem 0 0",
+                  }}
+                  className="address-buttons"
                 >
-                  PROCEED
-                </button>
+                  <Link to="/cart">
+                    <button
+                      style={{ cursor: "pointer" }}
+                      className="back-to-cart-btn"
+                    >
+                      BACK TO CART
+                    </button>
+                  </Link>
+                  <button
+                    type="submit"
+                    style={{ margin: "1rem 1rem 1rem 1rem", cursor: "pointer" }}
+                    className="proceed-btn"
+                  >
+                    PROCEED
+                  </button>
+                </div>{" "}
               </div>
             </div>
           </form>
