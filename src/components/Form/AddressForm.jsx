@@ -115,7 +115,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 border: "1px solid lightgray",
-                // padding: "2rem ",
+                padding: "1rem ",
               }}
             >
               <div style={{ width: "65vw" }}>
@@ -124,7 +124,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                     display: "flex",
                     justifyContent: "center",
                     // border: "1px solid red",
-                    margin: "2rem 0 2rem",
+                    margin: "2rem 0 4rem",
                   }}
                 >
                   <div
@@ -155,7 +155,12 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                         onChange={(event) =>
                           setShippingCountry(event.target.value)
                         }
-                        style={{ width: "100%" }}
+                        style={{
+                          width: "100%",
+                          border: "none",
+                          boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
+                          padding: "1rem",
+                        }}
                       >
                         {countries.map((country) => {
                           return (
@@ -173,7 +178,12 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                         onChange={(event) =>
                           setShippingSubdivision(event.target.value)
                         }
-                        style={{ width: "100%" }}
+                        style={{
+                          width: "100%",
+                          border: "none",
+                          boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
+                          padding: "1rem",
+                        }}
                       >
                         {subdivisions.map((subdiv) => {
                           return (
@@ -191,7 +201,12 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                         onChange={(event) =>
                           setShippingOption(event.target.value)
                         }
-                        style={{ width: "100%" }}
+                        style={{
+                          width: "100%",
+                          border: "none",
+                          boxShadow: "rgba(0, 0, 0, 0.08) 0px 4px 12px",
+                          padding: "1rem",
+                        }}
                       >
                         {options.map((option) => {
                           return (
@@ -209,7 +224,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                     display: "flex",
                     justifyContent: "flex-end",
                     alignItems: "center",
-                    // margin: "2rem 0 0",
+                    margin: "2rem 0 0",
                     // border: "1px solid blue",
                   }}
                   className="address-buttons"
@@ -224,7 +239,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   </Link>
                   <button
                     type="submit"
-                    style={{ margin: "1rem 1rem 1rem 1rem", cursor: "pointer" }}
+                    style={{ cursor: "pointer" }}
                     className="proceed-btn"
                   >
                     PROCEED
