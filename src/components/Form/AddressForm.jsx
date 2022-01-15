@@ -107,9 +107,6 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                 shippingOption,
               });
             })}
-            style={{
-              width: "max-content",
-            }}
           >
             <div
               style={{
@@ -118,131 +115,102 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 border: "1px solid lightgray",
-                padding: "2rem 0 0",
+                // padding: "2rem ",
               }}
             >
-              <div>
+              <div style={{ width: "65vw" }}>
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "row",
-                    border: "1px solid red",
+                    justifyContent: "center",
+                    // border: "1px solid red",
+                    margin: "2rem 0 2rem",
                   }}
                 >
-                  <div>
-                    <h3
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      Shipping Address
-                    </h3>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        margin: "1rem ",
-                      }}
-                    >
-                      <FormInput name="firstName" label="First name" />
-                      <FormInput name="lastName" label="Last name" />
-                      <FormInput name="address1" label="Address" />
-                      <FormInput name="email" label="Email" />
-                      <FormInput name="city" label="City" />
-                      <FormInput name="postalCode" label="Postal Code" />
-                    </div>
+                  <div
+                    style={{
+                      // border: "1px solid yellow",
+                      width: "100%",
+                    }}
+                  >
+                    <h3>Shipping Address</h3>
+                    <FormInput name="firstName" label="First name" />
+                    <FormInput name="lastName" label="Last name" />
+                    <FormInput name="address1" label="Address" />
+                    <FormInput name="email" label="Email" />
+                    <FormInput name="city" label="City" />
+                    <FormInput name="postalCode" label="Postal Code" />
                     {/* Commenting out the div tags below combines the separate divs */}
                     {/* </div>
                   <div> */}
+                    <div
+                      style={{
+                        // border: "1px solid yellow",
+                        width: "100%",
+                      }}
+                    >
+                      <h4>Shipping Country</h4>
+                      <select
+                        value={shippingCountry}
+                        onChange={(event) =>
+                          setShippingCountry(event.target.value)
+                        }
+                        style={{ width: "100%" }}
+                      >
+                        {countries.map((country) => {
+                          return (
+                            <option value={country.id} key={country.id}>
+                              {country.label}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
                     <div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                      <h4>Shipping Subdivision</h4>
+                      <select
+                        value={shippingSubdivision}
+                        onChange={(event) =>
+                          setShippingSubdivision(event.target.value)
+                        }
+                        style={{ width: "100%" }}
                       >
-                        <h4>Shipping Country</h4>
-                        <select
-                          value={shippingCountry}
-                          onChange={(event) =>
-                            setShippingCountry(event.target.value)
-                          }
-                          style={{ width: "80%" }}
-                        >
-                          {countries.map((country) => {
-                            return (
-                              <option value={country.id} key={country.id}>
-                                {country.label}
-                              </option>
-                            );
-                          })}
-                        </select>
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                        {subdivisions.map((subdiv) => {
+                          return (
+                            <option value={subdiv.id} key={subdiv.id}>
+                              {subdiv.label}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div>
+                      <h4>Shipping Methods</h4>
+                      <select
+                        value={shippingOption}
+                        onChange={(event) =>
+                          setShippingOption(event.target.value)
+                        }
+                        style={{ width: "100%" }}
                       >
-                        <h4>Shipping Subdivision</h4>
-                        <select
-                          value={shippingSubdivision}
-                          onChange={(event) =>
-                            setShippingSubdivision(event.target.value)
-                          }
-                          style={{ width: "80%" }}
-                        >
-                          {subdivisions.map((subdiv) => {
-                            return (
-                              <option value={subdiv.id} key={subdiv.id}>
-                                {subdiv.label}
-                              </option>
-                            );
-                          })}
-                        </select>
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <h4>Shipping Methods</h4>
-                        <select
-                          value={shippingOption}
-                          onChange={(event) =>
-                            setShippingOption(event.target.value)
-                          }
-                          style={{ width: "80%" }}
-                        >
-                          {options.map((option) => {
-                            return (
-                              <option value={option.id} key={option.id}>
-                                {option.label}
-                              </option>
-                            );
-                          })}
-                        </select>
-                      </div>
+                        {options.map((option) => {
+                          return (
+                            <option value={option.id} key={option.id}>
+                              {option.label}
+                            </option>
+                          );
+                        })}
+                      </select>
                     </div>
                   </div>
-                  <br />
                 </div>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "flex-end",
                     alignItems: "center",
-                    margin: "2rem 0 0",
+                    // margin: "2rem 0 0",
+                    // border: "1px solid blue",
                   }}
                   className="address-buttons"
                 >
@@ -261,7 +229,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                   >
                     PROCEED
                   </button>
-                </div>{" "}
+                </div>
               </div>
             </div>
           </form>

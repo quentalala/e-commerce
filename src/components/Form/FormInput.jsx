@@ -7,7 +7,7 @@ const FormInput = ({ name, label, required }) => {
   return (
     <div
       style={{
-        margin: "0.5rem",
+        width: "auto",
       }}
     >
       <Controller
@@ -19,9 +19,10 @@ const FormInput = ({ name, label, required }) => {
               placeholder={`${label}*`}
               required={required}
               style={{
-                width: "auto",
+                width: "100%",
                 padding: 0,
                 margin: 0,
+                boxSizing: "border-box",
               }}
             />
           );
