@@ -122,7 +122,13 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
               }}
             >
               <div>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    border: "1px solid red",
+                  }}
+                >
                   <div>
                     <h3
                       style={{
@@ -148,8 +154,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                       <FormInput name="city" label="City" />
                       <FormInput name="postalCode" label="Postal Code" />
                     </div>
-                  </div>
-                  <div>
+                    {/* Commenting out the div tags below combines the separate divs */}
+                    {/* </div>
+                  <div> */}
                     <div>
                       <div
                         style={{
