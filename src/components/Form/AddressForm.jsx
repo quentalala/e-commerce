@@ -124,7 +124,7 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                     display: "flex",
                     justifyContent: "center",
                     // border: "1px solid red",
-                    margin: "2rem 0 4rem",
+                    // margin: "2rem 0 2rem",
                   }}
                 >
                   <div
@@ -133,7 +133,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                       width: "100%",
                     }}
                   >
-                    <h3>Shipping Address</h3>
+                    <h3 style={{ display: "flex", justifyContent: "center" }}>
+                      Shipping Address
+                    </h3>
                     <FormInput name="firstName" label="First name" />
                     <FormInput name="lastName" label="Last name" />
                     <FormInput name="address1" label="Address" />
@@ -149,7 +151,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                         width: "100%",
                       }}
                     >
-                      <h4>Shipping Country</h4>
+                      <h4 style={{ display: "flex", justifyContent: "center" }}>
+                        Shipping Country
+                      </h4>
                       <select
                         value={shippingCountry}
                         onChange={(event) =>
@@ -172,7 +176,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                       </select>
                     </div>
                     <div>
-                      <h4>Shipping Subdivision</h4>
+                      <h4 style={{ display: "flex", justifyContent: "center" }}>
+                        Shipping Subdivision
+                      </h4>
                       <select
                         value={shippingSubdivision}
                         onChange={(event) =>
@@ -195,7 +201,9 @@ const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
                       </select>
                     </div>
                     <div>
-                      <h4>Shipping Methods</h4>
+                      <h4 style={{ display: "flex", justifyContent: "center" }}>
+                        Shipping Methods
+                      </h4>
                       <select
                         value={shippingOption}
                         onChange={(event) =>
