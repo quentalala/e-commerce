@@ -5,6 +5,7 @@ import {
   CardElement,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import "./PaymentForm.css";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -76,7 +77,11 @@ const PaymentForm = ({
             {({ elements, stripe }) => (
               <form
                 onSubmit={(e) => handleSubmit(e, elements, stripe)}
-                style={{ width: 500, border: "1px solid lightgrey" }}
+                style={{
+                  width: 500,
+                  border: "1px solid lightgrey",
+                  padding: "1rem",
+                }}
               >
                 <CardElement />
                 <br />
@@ -87,9 +92,30 @@ const PaymentForm = ({
                     justifyContent: "space-between",
                   }}
                 >
-                  <button onClick={backStep}>Go back</button>
-                  <button type="submit" disabled={!stripe}>
-                    Proceed to pay{" "}
+                  <button
+                    onClick={backStep}
+                    className="back-btn"
+                    style={{
+                      cursor: "pointer",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    BACK
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!stripe}
+                    className="proceed-btn"
+                    style={{
+                      cursor: "pointer",
+                      border: "none",
+                      padding: "0.5rem",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    PROCEED TO PAY{" "}
                     {checkoutToken.live.subtotal.formatted_with_symbol}
                   </button>
                 </div>

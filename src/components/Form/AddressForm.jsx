@@ -6,7 +6,7 @@ import FormInput from "./FormInput";
 import { Link } from "react-router-dom";
 import "./AddressForm.css";
 
-const AddressForm = ({ nextStep, backStep, checkoutToken, next }) => {
+const AddressForm = ({ checkoutToken, next }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
