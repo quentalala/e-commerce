@@ -104,7 +104,9 @@ const Cart = ({
 
   return (
     <>
-      <h1 className="page-title">CART</h1>
+      <h1 className="page-title" style={{ margin: "3rem 0 3rem" }}>
+        CART
+      </h1>
       <div className="cart-container">
         {!cart.line_items.length ? <EmptyCart /> : <NonEmptyCart />}
       </div>
