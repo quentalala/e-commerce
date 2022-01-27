@@ -4,9 +4,10 @@ import PaymentForm from "../components/Form/PaymentForm";
 import { commerce } from "../library/commerce";
 import { Link } from "react-router-dom";
 import "./Checkout.css";
+import { CircularProgress } from "@mui/material";
 
 const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
-  const [currStep, setCurrStep] = useState(0);
+  const [currStep, setCurrStep] = useState(2);
   const [checkoutToken, setCheckoutToken] = useState("");
   const [shippingData, setShippingData] = useState({});
   const [isFinished, setIsFinished] = useState(false);
@@ -24,7 +25,7 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
           "cart",
           commerce.cart.id()
         );
-        console.log(token);
+        // console.log(token);
         setCheckoutToken(token);
       } catch (err) {}
     };
@@ -88,7 +89,9 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
         </div>
       </div>
     ) : (
-      <div>waiting</div>
+      <div>
+        <CircularProgress />
+      </div>
     );
   };
 
@@ -122,7 +125,7 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
         timeout={timeout}
       />
     );
-  console.log("current step is at", currStep);
+  // console.log("current step is at", currStep);
 
   return (
     <div>
