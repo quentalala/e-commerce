@@ -3,12 +3,17 @@ import AddressForm from "../components/Form/AddressForm";
 import PaymentForm from "../components/Form/PaymentForm";
 import { commerce } from "../library/commerce";
 import { Link } from "react-router-dom";
+import "./Checkout.css";
 
 const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
   const [currStep, setCurrStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState("");
   const [shippingData, setShippingData] = useState({});
   const [isFinished, setIsFinished] = useState(false);
+
+  // Edit styling for the purchase confirmation notification
+  // const [currStep, setCurrStep] = useState(2);
+  // const [isFinished, setIsFinished] = useState(true);
 
   // Generate cart token
   useEffect(() => {
@@ -49,15 +54,39 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
         </Link>
       </>
     ) : isFinished ? (
-      <>
-        <div>
-          <div>Thanks for your purchase</div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            border: "1px solid grey",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "50vw",
+            padding: "1rem 0 1rem",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "2rem",
+            }}
+          >
+            <div>THANKS FOR YOUR PURCHASE</div>
+          </div>
+          <br />
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              textDecoration: "none",
+            }}
+          >
+            <button className="back-btn">BACK TO HOMEPAGE</button>
+          </Link>
         </div>
-        <br />
-        <Link to="/">
-          <button>To Homepage</button>
-        </Link>
-      </>
+      </div>
     ) : (
       <div>waiting</div>
     );
