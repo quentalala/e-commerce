@@ -7,7 +7,7 @@ import "./Checkout.css";
 import { CircularProgress } from "@mui/material";
 
 const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
-  const [currStep, setCurrStep] = useState(2);
+  const [currStep, setCurrStep] = useState(0);
   const [checkoutToken, setCheckoutToken] = useState("");
   const [shippingData, setShippingData] = useState({});
   const [isFinished, setIsFinished] = useState(false);
@@ -89,8 +89,13 @@ const Checkout = ({ cart, order, handleCaptureCheckout, error }) => {
         </div>
       </div>
     ) : (
-      <div>
-        <CircularProgress />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress color="inherit" style={{ margin: "3rem 0 3rem" }} />
       </div>
     );
   };
