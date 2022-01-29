@@ -6,11 +6,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* overflow-x: auto; */
 }
 
 /* Cart Summary */
 .cart-table {
   table-layout: fixed;
+  width: 80vw;
 }
 
 /* Wraps the table row */
@@ -39,7 +41,7 @@
 
 /* Cart Summary - Name */
 .cart-item-name {
-  width: 400px;
+  /* width: 400px; */
   display: flex;
   align-items: center;
 }
@@ -49,7 +51,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  /* width: 200px; */
 }
 
 .cart-item-qty button {
@@ -70,7 +72,7 @@
 
 /* Cart Summary - Price */
 .cart-item-price {
-  width: 100px;
+  /* width: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +81,7 @@
 /* Remove Cart Item(s) */
 .cart-item-rm {
   display: flex;
-  width: 100px;
+  /* width: 100px; */
   justify-content: flex-end;
 }
 
